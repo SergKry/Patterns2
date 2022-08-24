@@ -1,4 +1,3 @@
-
 image: Ubuntu  # образ для сборки
 
 stack: jdk 11  # версия JDK
@@ -11,8 +10,10 @@ build: off
 
 install:
   # запускаем SUT (& означает, что в фоновом режиме - не блокируем терминал для запуска тестов)
-  - chmod +x gradlew
-  - java -jar ./app-ibank.jar -P:profile=test &
+
+  - java -jar ./artifacts/app-ibank.jar -P:profile=test &
 
 build_script:
-  - ./gradlew test --info "-Dselenide.headless=true"
+
+  - chmod +x gradlew
+  - ./gradlew test --info -Dselenide.headless=true
